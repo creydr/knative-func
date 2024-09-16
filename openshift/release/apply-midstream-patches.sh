@@ -16,6 +16,8 @@
 
 # Applies the midstream patches and runs update-codegen.sh
 
+set -exo pipefail
+
 # Apply midstream patches
 if [[ -d openshift/patches ]]; then
   git apply openshift/patches/*

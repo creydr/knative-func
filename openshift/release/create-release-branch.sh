@@ -28,9 +28,9 @@ git fetch upstream -v --tags
 git checkout -b "$target" "$release"
 
 # Copy the midstream specific files from the OPENSHIFT/main branch.
-git fetch openshift main
+git fetch origin mirror-upstream-branches_test
 # shellcheck disable=SC2086
-git checkout openshift/main -- $MIDSTREAM_CUSTOM_FILES
+git checkout origin/mirror-upstream-branches_test -- $MIDSTREAM_CUSTOM_FILES
 
 openshift/release/apply-midstream-patches.sh
 
@@ -38,5 +38,7 @@ openshift/release/apply-midstream-patches.sh
 tag=${target/release-/}
 yq write --inplace openshift/project.yaml project.tag "knative-$tag"
 
+git status
 git add .
+git status
 git commit -m ":open_file_folder: Add OpenShift specific files"

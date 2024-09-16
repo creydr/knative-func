@@ -58,5 +58,6 @@ while read -r UPSTREAM_BRANCH; do
   openshift/release/create-release-branch.sh "$UPSTREAM_TAG" "$MIDSTREAM_BRANCH"
 
   # we could check the error code, but we 'set -e', so assume we're fine
-  git push openshift "$MIDSTREAM_BRANCH"
+  echo "Skipping push to openshift ${MIDSTREAM_BRANCH}"
+  # git push openshift "$MIDSTREAM_BRANCH"
 done < "$TMPDIR/new_branches"
