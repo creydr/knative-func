@@ -122,6 +122,8 @@ func (d *Describer) Describe(ctx context.Context, name, namespace string) (fn.In
 			description.Middleware = fn.Middleware{
 				Version: v,
 			}
+		} else {
+			fmt.Printf("WARNING: unable to determine version for image %q: %v", description.Image, err)
 		}
 	}
 

@@ -90,6 +90,8 @@ func (d *Describer) Describe(ctx context.Context, name, namespace string) (fn.In
 		if err == nil {
 			// don't fail on errors
 			middlewareVersion = v
+		} else {
+			fmt.Printf("WARNING: unable to determine version for image %q: %v", image, err)
 		}
 	}
 
